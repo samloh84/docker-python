@@ -18,7 +18,7 @@ ARG PYTHON3_SRC_TARXZ_ASC=Python-3.6.1.tar.xz.asc
 USER ${ROOT_UID}
 
 RUN \
-PYTHON3_COMPILE_DEPENDENCIES="gcc make zlib-devel openssl-devel readline-devel bzip2-devel xz-devel gdbm-devel tk-devel sqlite-devel"
+PYTHON3_COMPILE_DEPENDENCIES="gcc make zlib-devel openssl-devel readline-devel bzip2-devel xz-devel gdbm-devel tk-devel sqlite-devel" && \
 yum-install ${PYTHON3_COMPILE_DEPENDENCIES} && \
 mkdir -p ${TEMP_DIR} ${INSTALL_DIR} && \
 pushd ${TEMP_DIR} && \
