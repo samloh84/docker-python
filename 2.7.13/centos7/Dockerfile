@@ -18,7 +18,7 @@ ARG PYTHON2_SRC_TARXZ_ASC=Python-2.7.13.tar.xz.asc
 USER ${ROOT_UID}
 
 RUN \
-PYTHON2_COMPILE_DEPENDENCIES="gcc make zlib-devel openssl-devel readline-devel bzip2-devel gdbm-devel tk-devel sqlite-devel" && \
+PYTHON2_COMPILE_DEPENDENCIES="gcc gcc-c++ make zlib-devel openssl-devel readline-devel bzip2-devel gdbm-devel tk-devel sqlite-devel" && \
 yum-install ${PYTHON2_COMPILE_DEPENDENCIES} && \
 mkdir -p ${TEMP_DIR} ${INSTALL_DIR} && \
 pushd ${TEMP_DIR} && \
