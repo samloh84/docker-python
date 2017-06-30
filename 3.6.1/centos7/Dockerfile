@@ -35,13 +35,13 @@ tar -xf ${PYTHON3_SRC_TARXZ} --strip-components=1 -C ${TEMP_DIR} && \
 ./configure --enable-optimizations --prefix=${INSTALL_DIR} && \
 make && \
 make install && \
+pushd ${INSTALL_DIR} && \
+PATH=${PATH}:${INSTALL_DIR}/bin ${INSTALL_DIR}/bin/python2.7 -m ensurepip && \
+popd && \
 fix-ownership ${INSTALL_DIR} && \
 fix-permissions ${INSTALL_DIR} && \
 yum remove -y ${PYTHON3_COMPILE_DEPENDENCIES} && \
 yum clean all && \
-popd && \
-pushd ${INSTALL_DIR} && \
-PATH=${PATH}:${INSTALL_DIR}/bin ${INSTALL_DIR}/bin/python2.7 -m ensurepip && \
 popd && \
 rm -rf ${TEMP_DIR_ROOT}
 
