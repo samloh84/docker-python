@@ -36,7 +36,7 @@ tar -xf ${PYTHON3_SRC_TARXZ} --strip-components=1 -C ${TEMP_DIR} && \
 make && \
 make install && \
 pushd ${INSTALL_DIR} && \
-PATH=${PATH}:${INSTALL_DIR}/bin ${INSTALL_DIR}/bin/python2.7 -m ensurepip && \
+PATH=${PATH}:${INSTALL_DIR}/bin ${INSTALL_DIR}/bin/pip install -U pip && \
 popd && \
 fix-ownership ${INSTALL_DIR} && \
 fix-permissions ${INSTALL_DIR} && \
