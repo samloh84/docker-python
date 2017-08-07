@@ -1,0 +1,7 @@
+repository_name: samloh84/python2
+base_repositories:
+  - samloh84/centos
+#  - samloh84/alpine
+#  - samloh84/debian
+#  - samloh84/ubuntu
+

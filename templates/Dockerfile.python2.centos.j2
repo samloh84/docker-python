@@ -1,0 +1,96 @@
+FROM samloh84/centos:7
+
+ARG PRODUCT=python2
+ARG PRODUCT_VERSION={{ version }}
+ARG TEMP_DIR_ROOT=/tmp/${PRODUCT}
+ARG TEMP_DIR=/${TEMP_DIR_ROOT}/${PRODUCT_VERSION}
+ARG INSTALL_DIR_ROOT=/opt/${PRODUCT}
+ARG INSTALL_DIR=${INSTALL_DIR_ROOT}/${PRODUCT_VERSION}
+
+ARG PYTHON2_KEYS_URL="https://www.python.org/static/files/pubkeys.txt"
+
+{% if files['source']['.tar.xz'] %}
+ARG PYTHON2_SRC_TARXZ_URL="{{ files['source']['.tar.xz']['url'] }}"
+ARG PYTHON2_SRC_TARXZ="{{ files['source']['.tar.xz']['filename'] }}"
+
+{% if files['source']['.tar.xz']['md5sum'] %}
+ARG PYTHON2_SRC_TARXZ_MD5SUM="{{ files['source']['.tar.xz']['md5sum'] }}"
+{% endif %}
+
+{% if files['signatures']['.tar.xz.asc'] %}
+ARG PYTHON2_SRC_TARXZ_ASC_URL="{{ files['signatures']['.tar.xz.asc']['url'] }}"
+ARG PYTHON2_SRC_TARXZ_ASC="{{ files['signatures']['.tar.xz.asc']['filename'] }}"
+{% endif %}
+
+{% elif files['source']['.tgz'] %}
+
+ARG PYTHON2_SRC_TGZ_URL="{{ files['source']['.tgz']['url'] }}"
+ARG PYTHON2_SRC_TGZ="{{ files['source']['.tgz']['filename'] }}"
+
+{% if files['source']['.tgz']['md5sum'] %}
+ARG PYTHON2_SRC_TGZ_MD5SUM="{{ files['source']['.tgz']['md5sum'] }}"
+{% endif %}
+
+{% if files['signatures']['.tgz.asc'] %}
+ARG PYTHON2_SRC_TGZ_ASC_URL="{{ files['signatures']['.tgz.asc']['url'] }}"
+ARG PYTHON2_SRC_TGZ_ASC="{{ files['signatures']['.tgz.asc']['filename'] }}"
+{% endif %}
+
+{% endif %}
+
+USER ${ROOT_UID}
+
+RUN \
+PYTHON2_COMPILE_DEPENDENCIES="gcc gcc-c++ make zlib-devel openssl-devel readline-devel bzip2-devel gdbm-devel tk-devel sqlite-devel" && \
+yum-install ${PYTHON2_COMPILE_DEPENDENCIES} && \
+mkdir -p ${TEMP_DIR} ${INSTALL_DIR} && \
+pushd ${TEMP_DIR} && \
+curl -LjSs \
+${PYTHON2_KEYS_URL} -o KEYS && \
+gpg --import ./KEYS && \
+{% if files['source']['.tar.xz'] %}
+curl -LjSs \
+${PYTHON2_SRC_TARXZ_URL} -o ${PYTHON2_SRC_TARXZ} && \
+{% if files['signatures']['.tar.xz.asc'] %}
+curl -LjSs \
+${PYTHON2_SRC_TARXZ_ASC_URL} -o ${PYTHON2_SRC_TARXZ_ASC} && \
+{% endif %}
+{% if files['source']['.tar.xz']['md5sum'] %}
+echo "${PYTHON2_SRC_TARXZ_MD5SUM}  ${PYTHON2_SRC_TARXZ}" | md5sum -c - && \
+{% endif %}
+{% if files['signatures']['.tar.xz.asc'] %}
+gpg --verify ${PYTHON2_SRC_TARXZ_ASC} ${PYTHON2_SRC_TARXZ} && \
+{% endif %}
+tar -xf ${PYTHON2_SRC_TARXZ} --strip-components=1 -C ${TEMP_DIR} && \
+{% elif files['source']['.tgz'] %}
+curl -LjSs \
+${PYTHON2_SRC_TGZ_URL} -o ${PYTHON2_SRC_TGZ} && \
+{% if files['signatures']['.tgz.asc'] %}
+curl -LjSs \
+${PYTHON2_SRC_TGZ_ASC_URL} -o ${PYTHON2_SRC_TGZ_ASC} && \
+{% endif %}
+{% if files['source']['.tgz']['md5sum'] %}
+echo "${PYTHON2_SRC_TGZ_MD5SUM}  ${PYTHON2_SRC_TGZ}" | md5sum -c - && \
+{% endif %}
+{% if files['signatures']['.tgz.asc'] %}
+gpg --verify ${PYTHON2_SRC_TGZ_ASC} ${PYTHON2_SRC_TGZ} && \
+{% endif %}
+tar -xzf ${PYTHON2_SRC_TGZ} --strip-components=1 -C ${TEMP_DIR} && \
+{% endif %}
+./configure --enable-optimizations --prefix=${INSTALL_DIR} && \
+make && \
+make install && \
+pushd ${INSTALL_DIR} && \
+PATH=${PATH}:${INSTALL_DIR}/bin ${INSTALL_DIR}/bin/python2 -m ensurepip && \
+popd && \
+fix-ownership ${INSTALL_DIR} && \
+fix-permissions ${INSTALL_DIR} && \
+yum remove -y ${PYTHON2_COMPILE_DEPENDENCIES} && \
+yum clean all && \
+popd && \
+rm -rf ${TEMP_DIR_ROOT}
+
+ENV PYTHON2_HOME ${INSTALL_DIR}
+ENV PATH ${PYTHON2_HOME}/bin:${PATH}
+
+USER ${APP_UID}

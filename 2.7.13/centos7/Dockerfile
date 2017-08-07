@@ -7,13 +7,22 @@ ARG TEMP_DIR=/${TEMP_DIR_ROOT}/${PRODUCT_VERSION}
 ARG INSTALL_DIR_ROOT=/opt/${PRODUCT}
 ARG INSTALL_DIR=${INSTALL_DIR_ROOT}/${PRODUCT_VERSION}
 
-ARG PYTHON2_SRC_TARXZ_URL="https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz"
-ARG PYTHON2_SRC_TARXZ=Python-2.7.13.tar.xz
-ARG PYTHON2_SRC_TARXZ_MD5SUM=53b43534153bb2a0363f08bae8b9d990
-
 ARG PYTHON2_KEYS_URL="https://www.python.org/static/files/pubkeys.txt"
+
+
+ARG PYTHON2_SRC_TARXZ_URL="https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz"
+ARG PYTHON2_SRC_TARXZ="Python-2.7.13.tar.xz"
+
+
+ARG PYTHON2_SRC_TARXZ_MD5SUM="53b43534153bb2a0363f08bae8b9d990"
+
+
+
 ARG PYTHON2_SRC_TARXZ_ASC_URL="https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz.asc"
-ARG PYTHON2_SRC_TARXZ_ASC=Python-2.7.13.tar.xz.asc
+ARG PYTHON2_SRC_TARXZ_ASC="Python-2.7.13.tar.xz.asc"
+
+
+
 
 USER ${ROOT_UID}
 
@@ -23,15 +32,23 @@ yum-install ${PYTHON2_COMPILE_DEPENDENCIES} && \
 mkdir -p ${TEMP_DIR} ${INSTALL_DIR} && \
 pushd ${TEMP_DIR} && \
 curl -LjSs \
+${PYTHON2_KEYS_URL} -o KEYS && \
+gpg --import ./KEYS && \
+
+curl -LjSs \
 ${PYTHON2_SRC_TARXZ_URL} -o ${PYTHON2_SRC_TARXZ} && \
+
 curl -LjSs \
 ${PYTHON2_SRC_TARXZ_ASC_URL} -o ${PYTHON2_SRC_TARXZ_ASC} && \
-curl -LjSs \
-${PYTHON2_KEYS_URL} -o KEYS && \
+
+
 echo "${PYTHON2_SRC_TARXZ_MD5SUM}  ${PYTHON2_SRC_TARXZ}" | md5sum -c - && \
-gpg --import ./KEYS && \
+
+
 gpg --verify ${PYTHON2_SRC_TARXZ_ASC} ${PYTHON2_SRC_TARXZ} && \
+
 tar -xf ${PYTHON2_SRC_TARXZ} --strip-components=1 -C ${TEMP_DIR} && \
+
 ./configure --enable-optimizations --prefix=${INSTALL_DIR} && \
 make && \
 make install && \
