@@ -10,15 +10,15 @@ ARG INSTALL_DIR=${INSTALL_DIR_ROOT}/${PRODUCT_VERSION}
 ARG PYTHON3_KEYS_URL="https://www.python.org/static/files/pubkeys.txt"
 
 
-{% if files['source']['.tar.xz'] %}
+{%- if files['source']['.tar.xz'] %}
 ARG PYTHON3_SRC_TARXZ_URL="{{ files['source']['.tar.xz']['url'] }}"
 ARG PYTHON3_SRC_TARXZ="{{ files['source']['.tar.xz']['filename'] }}"
 
-{% if files['source']['.tar.xz']['md5sum'] %}
+{%- if files['source']['.tar.xz']['md5sum'] %}
 ARG PYTHON3_SRC_TARXZ_MD5SUM="{{ files['source']['.tar.xz']['md5sum'] }}"
 {% endif %}
 
-{% if files['signatures']['.tar.xz.asc'] %}
+{%- if files['signatures']['.tar.xz.asc'] %}
 ARG PYTHON3_SRC_TARXZ_ASC_URL="{{ files['signatures']['.tar.xz.asc']['url'] }}"
 ARG PYTHON3_SRC_TARXZ_ASC="{{ files['signatures']['.tar.xz.asc']['filename'] }}"
 {% endif %}
@@ -28,11 +28,11 @@ ARG PYTHON3_SRC_TARXZ_ASC="{{ files['signatures']['.tar.xz.asc']['filename'] }}"
 ARG PYTHON3_SRC_TGZ_URL="{{ files['source']['.tgz']['url'] }}"
 ARG PYTHON3_SRC_TGZ="{{ files['source']['.tgz']['filename'] }}"
 
-{% if files['source']['.tgz']['md5sum'] %}
+{%- if files['source']['.tgz']['md5sum'] %}
 ARG PYTHON3_SRC_TGZ_MD5SUM="{{ files['source']['.tgz']['md5sum'] }}"
 {% endif %}
 
-{% if files['signatures']['.tgz.asc'] %}
+{%- if files['signatures']['.tgz.asc'] %}
 ARG PYTHON3_SRC_TGZ_ASC_URL="{{ files['signatures']['.tgz.asc']['url'] }}"
 ARG PYTHON3_SRC_TGZ_ASC="{{ files['signatures']['.tgz.asc']['filename'] }}"
 {% endif %}
@@ -50,31 +50,31 @@ pushd ${TEMP_DIR} && \
 curl -LjSs \
 ${PYTHON3_KEYS_URL} -o KEYS && \
 gpg --import ./KEYS && \
-{% if files['source']['.tar.xz'] %}
+{%- if files['source']['.tar.xz'] %}
 curl -LjSs \
 ${PYTHON3_SRC_TARXZ_URL} -o ${PYTHON3_SRC_TARXZ} && \
-{% if files['signatures']['.tar.xz.asc'] %}
+{%- if files['signatures']['.tar.xz.asc'] %}
 curl -LjSs \
 ${PYTHON3_SRC_TARXZ_ASC_URL} -o ${PYTHON3_SRC_TARXZ_ASC} && \
 {% endif %}
-{% if files['source']['.tar.xz']['md5sum'] %}
+{%- if files['source']['.tar.xz']['md5sum'] %}
 echo "${PYTHON3_SRC_TARXZ_MD5SUM}  ${PYTHON3_SRC_TARXZ}" | md5sum -c - && \
 {% endif %}
-{% if files['signatures']['.tar.xz.asc'] %}
+{%- if files['signatures']['.tar.xz.asc'] %}
 gpg --verify ${PYTHON3_SRC_TARXZ_ASC} ${PYTHON3_SRC_TARXZ} && \
 {% endif %}
 tar -xf ${PYTHON3_SRC_TARXZ} --strip-components=1 -C ${TEMP_DIR} && \
 {% elif files['source']['.tgz'] %}
 curl -LjSs \
 ${PYTHON3_SRC_TGZ_URL} -o ${PYTHON3_SRC_TGZ} && \
-{% if files['signatures']['.tgz.asc'] %}
+{%- if files['signatures']['.tgz.asc'] %}
 curl -LjSs \
 ${PYTHON3_SRC_TGZ_ASC_URL} -o ${PYTHON3_SRC_TGZ_ASC} && \
 {% endif %}
-{% if files['source']['.tgz']['md5sum'] %}
+{%- if files['source']['.tgz']['md5sum'] %}
 echo "${PYTHON3_SRC_TGZ_MD5SUM}  ${PYTHON3_SRC_TGZ}" | md5sum -c - && \
 {% endif %}
-{% if files['signatures']['.tgz.asc'] %}
+{%- if files['signatures']['.tgz.asc'] %}
 gpg --verify ${PYTHON3_SRC_TGZ_ASC} ${PYTHON3_SRC_TGZ} && \
 {% endif %}
 tar -xzf ${PYTHON3_SRC_TGZ} --strip-components=1 -C ${TEMP_DIR} && \
