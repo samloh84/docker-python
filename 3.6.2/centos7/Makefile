@@ -1,6 +1,6 @@
-REPOSITORY_NAME := samloh84/python2
+REPOSITORY_NAME := samloh84/python3
 REGISTRIES := 
-TAGS := 2.7.13 2.7.13-centos7
+TAGS := 3.6.2 3.6.2-centos7
 CONTAINER_NAME := $(shell echo $(REPOSITORY_NAME) | sed -e 's/[^a-zA-Z0-9_.-]/-/g')
 
 .PHONY: all clean build push bash sudo run exec rm rmi

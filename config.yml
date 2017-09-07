@@ -1,7 +1,36 @@
-repository_name: samloh84/python2
+repository_name: samloh84/python
 base_repositories:
   - samloh84/centos
 #  - samloh84/alpine
 #  - samloh84/debian
 #  - samloh84/ubuntu
 
+
+templates:
+  - Dockerfile
+  - Makefile
+starting_url: https://www.python.org/ftp/python/
+
+scraper_url_patterns:
+  - https://www.python.org/ftp/python/(\d+\.\d+(?:\.\d+)?)/$
+version_url_patterns:
+  - https://www.python.org/ftp/python/(\d+\.\d+(?:\.\d+)?)/$
+file_patterns:
+  binaries:
+    .tar.xz:
+      pattern: (\d+\.\d+(?:\.\d+)?)/(Python-(\d+\.\d+(?:\.\d+)?)-(.+)(\.tar\.xz))$
+      signature: (\d+\.\d+(?:\.\d+)?)/(Python-(\d+\.\d+(?:\.\d+)?)-(.+)(\.tar\.xz\.asc))$
+    .tgz:
+      pattern: (\d+\.\d+(?:\.\d+)?)/(Python-(\d+\.\d+(?:\.\d+)?)-(.+)(\.tgz))$
+      signature: (\d+\.\d+(?:\.\d+)?)/(Python-(\d+\.\d+(?:\.\d+)?)-(.+)(\.tgz\.asc))$
+  source:
+    .tar.xz:
+      pattern: (\d+\.\d+(?:\.\d+)?)/(Python-(\d+\.\d+(?:\.\d+)?)(\.tar\.xz))$
+      signature: (\d+\.\d+(?:\.\d+)?)/(Python-(\d+\.\d+(?:\.\d+)?)(\.tar\.xz\.asc))$
+    .tgz:
+      pattern: (\d+\.\d+(?:\.\d+)?)/(Python-(\d+\.\d+(?:\.\d+)?)(\.tgz))$
+      signature: (\d+\.\d+(?:\.\d+)?)/(Python-(\d+\.\d+(?:\.\d+)?)(\.tgz\.asc))$
+
+
+version_constraints:
+  - '>=2.7.0'

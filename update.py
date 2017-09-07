@@ -1,288 +1,100 @@
 #!/usr/bin/env python2
+import argparse
+import sys
+from pprint import pprint
 
-import os, sys, json, re, urlparse, errno, time, argparse
-from datetime import datetime, timedelta
-import yaml, semver, requests, grequests, jinja2
-from bs4 import BeautifulSoup
+from jinja2 import Environment, FileSystemLoader
+from pydash import get as _get, set_ as _set
+from pydash.objects import merge as _merge
 
-PYTHON_DISTRIBUTION_URL = "https://www.python.org/ftp/python/"
-PYTHON_RELEASES_URL = "https://www.python.org/downloads/release/"
+from scraper import *
 
-
-def http_get(url, headers=None):
-    return requests.get(url, headers=headers)
-
-
-def http_multiget(urls, headers=None):
-    return zip(urls, grequests.map([grequests.get(url, headers=headers) for url in urls]))
+from util import *
 
 
-def list_docker_hub_image_tags(repository):
-    url = "https://hub.docker.com/v2/repositories/" + repository + "/tags"
-    request_headers = {'Accept': 'application/json'}
-
-    tags = []
-
-    while url is not None:
-        response_data = http_get(url, headers=request_headers).json()
-        tags += response_data["results"]
-        url = response_data["next"]
-
-    return tags
-
-
-def list_python_versions():
-    python_distribution_html = requests.get(PYTHON_DISTRIBUTION_URL).text
-    python_distribution_soup = BeautifulSoup(python_distribution_html, 'html.parser')
-
-    version_pattern = re.compile('^(\d+\.\d+\.\d+)/$')
-
-    python_version_links = python_distribution_soup.find_all('a', href=version_pattern)
-
-    python_versions = {}
-    for python_version_link in python_version_links:
-        python_version = version_pattern.match(python_version_link['href']).group(1)
-        python_version_url = urlparse.urljoin(PYTHON_DISTRIBUTION_URL, python_version_link['href'])
-
-        python_versions[python_version] = {'link': python_version_url}
-
-    return python_versions
-
-
-def list_python_version_files(python_versions):
-    def parse_html(python_version_url, python_version_html, python_release_html):
-        patterns = {
-            'signatures': re.compile('^Python-\d+\.\d+\.\d+(\.tar\.xz\.asc|\.tgz\.asc)$'),
-            'source': re.compile('^Python-\d+\.\d+\.\d+(\.tar\.xz|\.tgz)$')
-        }
-
-        python_version_soup = BeautifulSoup(python_version_html, 'html.parser')
-        python_release_soup = BeautifulSoup(python_release_html, 'html.parser')
-
-        python_version_data = {}
-
-        for key, pattern in patterns.iteritems():
-            python_version_data[key] = {}
-            python_version_file_links = python_version_soup.find_all('a', href=pattern)
-            for python_version_file_link in python_version_file_links:
-                filename = python_version_file_link['href']
-                file_extension = pattern.match(filename).group(1)
-                python_version_file_url = urlparse.urljoin(python_version_url, python_version_file_link['href'])
-
-                python_version_data[key][file_extension] = {
-                    'filename': filename,
-                    'url': python_version_file_url,
-                }
-
-        for extension, source_file in python_version_data['source'].iteritems():
-            release_link = python_release_soup.find('a', href=source_file['url'])
-            md5sum = release_link.find_parent('tr').find_all('td')[3].text
-            python_version_data['source'][extension]['md5sum'] = md5sum
-
-        return python_version_data
-
-    python_release_urls = map(
-        lambda version: urlparse.urljoin(PYTHON_RELEASES_URL, 'python-' +
-                                         re.sub('[^\d]+', '', version)) + '/', python_versions)
-
-    python_version_urls = map(lambda version: urlparse.urljoin(PYTHON_DISTRIBUTION_URL, version + '/'),
-                              python_versions)
-
-    python_version_responses = http_multiget(python_version_urls)
-    python_release_responses = http_multiget(python_release_urls)
-    python_version_html = map(lambda response_tuple: response_tuple[1].text, python_version_responses)
-    python_release_html = map(lambda response_tuple: response_tuple[1].text, python_release_responses)
-    print(python_version_urls)
-
-    version_data = {}
-    for python_version, python_version_url, python_version_html, python_release_html in zip(python_versions,
-                                                                                            python_version_urls,
-                                                                                            python_version_html,
-                                                                                            python_release_html):
-        version_data[python_version] = parse_html(python_version_url, python_version_html, python_release_html)
-    return version_data
-
-
-def filter_latest_major_versions(versions, min_ver=None, max_ver=None):
-    major_versions = {}
-
-    latest_versions = []
-
-    for version in versions:
-        version_info = semver.parse_version_info(version)
-
-        if min_ver is not None and not semver.match(version, min_ver):
-            continue
-
-        if max_ver is not None and not semver.match(version, max_ver):
-            continue
-
-        major_version = str(version_info.major)
-        minor_version = str(version_info.minor)
-        current_major_version = major_versions.get(major_version)
-
-        if current_major_version is None:
-            major_versions[major_version] = {}
-        else:
-            current_minor_version = current_major_version.get(minor_version)
-            if current_minor_version is None or semver.compare(version, current_minor_version) > 0:
-                major_versions[major_version][minor_version] = version
-
-    for minor_version in major_versions.values():
-        latest_versions += minor_version.values()
-
-    return latest_versions
-
-
-def load_file(filename):
-    filename = os.path.abspath(filename)
-    with open(filename, 'r') as f:
-        return f.read()
-
-
-def load_yaml(filename):
-    return yaml.safe_load(load_file(filename))
-
-
-def write_file(filename, data):
-    filename = os.path.abspath(filename)
-    file_dir = os.path.dirname(filename)
-    mkdirp(file_dir)
-    with open(filename, 'w') as f:
-        f.write(data)
-
-
-def write_yaml(filename, data):
-    write_file(filename, yaml.safe_dump(data))
-
-
-def datetime_to_timestamp(date=None):
-    if date is None:
-        date = datetime.now()
-    return int(time.mktime(date.timetuple()))
-
-
-def timestamp_to_datetime(timestamp):
-    if timestamp is None or timestamp == "":
-        return None
-    return datetime.fromtimestamp(int(timestamp))
-
-
-def mkdirp(path):
-    try:
-        os.makedirs(path)
-    except OSError as exc:
-        if exc.errno == errno.EEXIST and os.path.isdir(path):
-            pass
-
-
-def load_python_data(config, data_file, force_update=False, update_all_versions=False):
-    current_datetime = datetime.now()
-    current_timestamp = datetime_to_timestamp(current_datetime)
-
-    python_data = {'versions': {}}
-    last_updated = None
-    python_data_updated = False
-
-    try:
-        if os.path.isfile(data_file):
-            python_data = load_yaml(data_file)
-            last_updated = timestamp_to_datetime(python_data['last_updated'])
-    except:
-        pass
-
-    update = force_update or last_updated is None or last_updated + timedelta(days=1) <= current_datetime
-
-    if update:
-        versions = list_python_versions()
-        for version in versions:
-            if python_data['versions'].get(version) is None:
-                python_data['versions'][version] = {}
-        python_data_updated = True
-    else:
-        versions = python_data['versions'].keys()
-
-    latest_major_versions = filter_latest_major_versions(versions, config.get('min_version'), config.get('max_version'))
+def update_python_data(data, config, update_all_versions=False):
+    scraper = PythonScraper(config)
+    versions = scraper.list_version_urls().keys()
 
     if update_all_versions:
         versions_to_update = versions
     else:
-        versions_to_update = [version for version in latest_major_versions if
-                              force_update or python_data['versions'][version].get('files') is None]
+        versions_to_update = filter_versions(versions, config.get('version_constraints'),
+                                             normalize_version=normalize_version_to_semver)
 
-    if versions_to_update:
-        python_version_files = list_python_version_files(versions_to_update)
-        for version, version_files in python_version_files.iteritems():
-            if python_data['versions'][version].get('files') is None:
-                python_data['versions'][version]['files'] = {}
-            python_data['versions'][version]['files'].update(version_files)
-        python_data_updated = True
-
-    if python_data_updated:
-        python_data['last_updated'] = datetime_to_timestamp()
-        write_yaml(data_file, python_data)
-        print ("Updated " + data_file)
-
-    return python_data, latest_major_versions
+    _merge(data, {'versions': scraper.list_version_files(versions)}, {'last_updated': datetime_to_timestamp()})
+    return data
 
 
-def render_dockerfiles(config, python_data, latest_major_versions, force_update=False):
-    jinja2_env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.abspath('templates')))
+def render_python_dockerfiles(data, config, update_all_versions=False, force_update=False):
+    env = Environment(loader=FileSystemLoader(os.path.abspath('templates')))
+    base_repositories = config['base_repositories']
+    template_files = config['templates']
 
-    for base_repository in config['base_repositories']:
-        base_repository_tags = [base_repository_tag['name'] for base_repository_tag in
-                                list_docker_hub_image_tags(base_repository) if base_repository_tag['name'] != 'latest']
+    versions = data['versions'].keys()
 
-        base_os = base_repository[base_repository.rfind('/') + 1:]
+    if update_all_versions:
+        versions_to_update = versions
+    else:
+        versions_to_update = filter_versions(versions, config.get('version_constraints'),
+                                             normalize_version=normalize_version_to_semver)
 
-        makefile_template = jinja2_env.select_template(['Makefile.' + base_os + '.j2', 'Makefile.j2'])
+    for version in versions_to_update:
+        version_files = data['versions'][version]
 
-        for base_repository_tag in base_repository_tags:
-            base_image_name = base_repository + ':' + base_repository_tag
-            tag_suffix = base_os + base_repository_tag
+        major_version = str(semver.parse_version_info(normalize_version_to_semver(version)).major)
 
-            for version in latest_major_versions:
+        repository_name = config['repository_name'] + major_version
 
-                dockerfile_template = jinja2_env.select_template([
-                    'Dockerfile.' + 'python' + str(semver.parse_version_info(version).major) + '.' + base_os + '.j2',
-                    'Dockerfile.' + base_os + '.j2', 'Dockerfile.j2'])
+        for base_repository in base_repositories:
+            base_repository_name = base_repository[base_repository.rfind('/') + 1:]
+            base_repository_tags = [tag['name'] for tag in list_docker_hub_image_tags(base_repository) if
+                                    tag['name'] != 'latest']
+            base_repository_tag_groups = group_tags(base_repository_tags)
 
-                image_tags = [version, version + '-' + tag_suffix]
-                dockerfile_context = os.path.join(os.getcwd(), version, tag_suffix)
+            for base_repository_tag_group in base_repository_tag_groups:
+                base_repository_tag = base_repository_tag_group[0]
+                base_image_name = base_repository + ':' + base_repository_tag
 
-                dockerfile_path = os.path.join(dockerfile_context, 'Dockerfile')
-                makefile_path = os.path.join(dockerfile_context, 'Makefile')
+                dockerfile_context = os.path.join(os.getcwd(), version, base_repository_name + base_repository_tag)
 
-                dockerfile_exists = os.path.exists(dockerfile_path)
-                makefile_exists = os.path.exists(makefile_path)
+                tags = [version]
+                for tag in base_repository_tag_group:
+                    tags.append(version + '-' + base_repository_name + tag)
+                version_info = semver.parse_version_info(normalize_version_to_semver(version))
 
-                if force_update or not dockerfile_exists or not makefile_exists:
-                    render_data = {
-                        'version': version,
-                        'repository_name': config['repository_name'],
-                        'base_os': base_os,
-                        'base_image_name': base_image_name,
-                        'tag_suffix': tag_suffix,
-                        'dockerfile_context': dockerfile_context,
-                        'image_tags': image_tags
-                    }
+                base_os = re.compile('centos|alpine|ubuntu|debian|fedora|rhel').search(
+                    base_repository_name + base_repository_tag).group(0)
 
-                    render_data.update(python_data['versions'][version])
+                render_data = {
+                    'version': version,
+                    'version_info': version_info,
+                    'files': version_files,
+                    'base_repository_name': base_repository_name,
+                    'base_image_name': base_image_name,
+                    'config': config,
+                    'repository_name': repository_name,
+                    'tags': tags
+                }
 
-                    try:
-                        if force_update or not dockerfile_exists:
-                            write_file(dockerfile_path, dockerfile_template.render(render_data))
-                            print 'Generated ' + dockerfile_path
-                        if force_update or not makefile_exists:
-                            write_file(makefile_path, makefile_template.render(render_data))
-                            print 'Generated ' + makefile_path
-                    except BaseException as err:
-                        print(version)
-                        print(err)
+                pprint(render_data)
+                for template_file in template_files:
+                    template_filenames = [
+                        template_file + '.python' + major_version + '.' + base_os + '.j2',
+                        template_file + '.' + base_os + '.j2',
+                        template_file + '.j2'
+                    ]
+
+                    template = env.select_template(template_filenames)
+
+                    template_render_path = os.path.join(dockerfile_context, template_file)
+                    if not os.path.exists(template_render_path) or force_update:
+                        write_file(template_render_path, template.render(render_data))
+                        print 'Rendered template: ' + template_render_path
 
 
 def main(argv):
-    parser = argparse.ArgumentParser(description='Updates Python data file with version URLs and Dockerfiles.')
+    parser = argparse.ArgumentParser(description='Updates data file with urls and renders Dockerfiles.')
     parser.add_argument('--data-file', nargs='?', dest='data_file', default=os.path.abspath('python.yml'))
     parser.add_argument('--config-file', nargs='?', dest='config_file', default=os.path.abspath('config.yml'))
     parser.add_argument('-f', '--force-update', dest='force_update', action='store_true')
@@ -297,8 +109,22 @@ def main(argv):
 
     config = load_yaml(config_file)
 
-    python_data, latest_major_versions = load_python_data(config, data_file, force_update, update_all)
-    render_dockerfiles(config, python_data, latest_major_versions, force_update)
+    saved_data = load_data_file(data_file)
+    if saved_data is not None:
+        data, _, update = saved_data
+        perform_update = update or force_update
+    else:
+        data = {'versions': {}}
+        perform_update = True
+
+    pprint(data)
+    pprint(perform_update)
+
+    if perform_update:
+        data = update_python_data(data, config, update_all)
+        write_yaml(data_file, data)
+
+    render_python_dockerfiles(data, config, update_all, force_update)
 
 
 if __name__ == '__main__':

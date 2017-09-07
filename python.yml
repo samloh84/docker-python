@@ -1,184 +1,995 @@
-last_updated: 1502097076
+last_updated: 1504766752
 versions:
   2.0.1:
-    files:
-      signatures: {}
-      source:
-        .tgz: {filename: Python-2.0.1.tgz, md5sum: eba86a416f8e8ab682544aade7d0cc27,
-          url: 'https://www.python.org/ftp/python/2.0.1/Python-2.0.1.tgz'}
-  2.1.1: {}
-  2.1.2: {}
+    source:
+      .tgz:
+        filename: Python-2.0.1.tgz
+        url: https://www.python.org/ftp/python/2.0.1/Python-2.0.1.tgz
+  '2.1':
+    source:
+      .tgz:
+        filename: Python-2.1.tgz
+        url: https://www.python.org/ftp/python/2.1/Python-2.1.tgz
+  2.1.1:
+    source:
+      .tgz:
+        filename: Python-2.1.1.tgz
+        url: https://www.python.org/ftp/python/2.1.1/Python-2.1.1.tgz
+  2.1.2:
+    source:
+      .tgz:
+        filename: Python-2.1.2.tgz
+        url: https://www.python.org/ftp/python/2.1.2/Python-2.1.2.tgz
   2.1.3:
-    files:
-      signatures: {}
-      source:
-        .tgz: {filename: Python-2.1.3.tgz, md5sum: 9b8dad1d90c1bfebe9b00e77433d4b8a,
-          url: 'https://www.python.org/ftp/python/2.1.3/Python-2.1.3.tgz'}
-  2.2.1: {}
-  2.2.2: {}
+    source:
+      .tgz:
+        filename: Python-2.1.3.tgz
+        url: https://www.python.org/ftp/python/2.1.3/Python-2.1.3.tgz
+  '2.2':
+    source:
+      .tgz:
+        filename: Python-2.2.tgz
+        url: https://www.python.org/ftp/python/2.2/Python-2.2.tgz
+  2.2.1:
+    source:
+      .tgz:
+        filename: Python-2.2.1.tgz
+        url: https://www.python.org/ftp/python/2.2.1/Python-2.2.1.tgz
+  2.2.2:
+    source:
+      .tgz:
+        filename: Python-2.2.2.tgz
+        url: https://www.python.org/ftp/python/2.2.2/Python-2.2.2.tgz
   2.2.3:
-    files:
-      signatures: {}
-      source:
-        .tgz: {filename: Python-2.2.3.tgz, md5sum: a252b35aef554947413da9c8dff1208d,
-          url: 'https://www.python.org/ftp/python/2.2.3/Python-2.2.3.tgz'}
-  2.3.1: {}
-  2.3.2: {}
-  2.3.3: {}
-  2.3.4: {}
-  2.3.5: {}
-  2.3.6: {}
+    source:
+      .tgz:
+        filename: Python-2.2.3.tgz
+        url: https://www.python.org/ftp/python/2.2.3/Python-2.2.3.tgz
+  '2.3':
+    source:
+      .tgz:
+        filename: Python-2.3.tgz
+        signature:
+          filename: Python-2.3.tgz.asc
+          url: https://www.python.org/ftp/python/2.3/Python-2.3.tgz.asc
+        url: https://www.python.org/ftp/python/2.3/Python-2.3.tgz
+  2.3.1:
+    source:
+      .tgz:
+        filename: Python-2.3.1.tgz
+        signature:
+          filename: Python-2.3.1.tgz.asc
+          url: https://www.python.org/ftp/python/2.3.1/Python-2.3.1.tgz.asc
+        url: https://www.python.org/ftp/python/2.3.1/Python-2.3.1.tgz
+  2.3.2:
+    source:
+      .tgz:
+        filename: Python-2.3.2.tgz
+        signature:
+          filename: Python-2.3.2.tgz.asc
+          url: https://www.python.org/ftp/python/2.3.2/Python-2.3.2.tgz.asc
+        url: https://www.python.org/ftp/python/2.3.2/Python-2.3.2.tgz
+  2.3.3:
+    source:
+      .tgz:
+        filename: Python-2.3.3.tgz
+        signature:
+          filename: Python-2.3.3.tgz.asc
+          url: https://www.python.org/ftp/python/2.3.3/Python-2.3.3.tgz.asc
+        url: https://www.python.org/ftp/python/2.3.3/Python-2.3.3.tgz
+  2.3.4:
+    source:
+      .tgz:
+        filename: Python-2.3.4.tgz
+        signature:
+          filename: Python-2.3.4.tgz.asc
+          url: https://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz.asc
+        url: https://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz
+  2.3.5:
+    source:
+      .tgz:
+        filename: Python-2.3.5.tgz
+        signature:
+          filename: Python-2.3.5.tgz.asc
+          url: https://www.python.org/ftp/python/2.3.5/Python-2.3.5.tgz.asc
+        url: https://www.python.org/ftp/python/2.3.5/Python-2.3.5.tgz
+  2.3.6:
+    source:
+      .tgz:
+        filename: Python-2.3.6.tgz
+        signature:
+          filename: Python-2.3.6.tgz.asc
+          url: https://www.python.org/ftp/python/2.3.6/Python-2.3.6.tgz.asc
+        url: https://www.python.org/ftp/python/2.3.6/Python-2.3.6.tgz
   2.3.7:
-    files:
-      signatures:
-        .tgz.asc: {filename: Python-2.3.7.tgz.asc, url: 'https://www.python.org/ftp/python/2.3.7/Python-2.3.7.tgz.asc'}
-      source:
-        .tgz: {filename: Python-2.3.7.tgz, md5sum: 454aa0f8db594c9533ee762f8102e5eb,
-          url: 'https://www.python.org/ftp/python/2.3.7/Python-2.3.7.tgz'}
-  2.4.1: {}
-  2.4.2: {}
-  2.4.3: {}
-  2.4.4: {}
-  2.4.5: {}
+    source:
+      .tgz:
+        filename: Python-2.3.7.tgz
+        signature:
+          filename: Python-2.3.7.tgz.asc
+          url: https://www.python.org/ftp/python/2.3.7/Python-2.3.7.tgz.asc
+        url: https://www.python.org/ftp/python/2.3.7/Python-2.3.7.tgz
+  '2.4':
+    source:
+      .tgz:
+        filename: Python-2.4.tgz
+        signature:
+          filename: Python-2.4.tgz.asc
+          url: https://www.python.org/ftp/python/2.4/Python-2.4.tgz.asc
+        url: https://www.python.org/ftp/python/2.4/Python-2.4.tgz
+  2.4.1:
+    source:
+      .tgz:
+        filename: Python-2.4.1.tgz
+        signature:
+          filename: Python-2.4.1.tgz.asc
+          url: https://www.python.org/ftp/python/2.4.1/Python-2.4.1.tgz.asc
+        url: https://www.python.org/ftp/python/2.4.1/Python-2.4.1.tgz
+  2.4.2:
+    source:
+      .tgz:
+        filename: Python-2.4.2.tgz
+        signature:
+          filename: Python-2.4.2.tgz.asc
+          url: https://www.python.org/ftp/python/2.4.2/Python-2.4.2.tgz.asc
+        url: https://www.python.org/ftp/python/2.4.2/Python-2.4.2.tgz
+  2.4.3:
+    source:
+      .tgz:
+        filename: Python-2.4.3.tgz
+        signature:
+          filename: Python-2.4.3.tgz.asc
+          url: https://www.python.org/ftp/python/2.4.3/Python-2.4.3.tgz.asc
+        url: https://www.python.org/ftp/python/2.4.3/Python-2.4.3.tgz
+  2.4.4:
+    source:
+      .tgz:
+        filename: Python-2.4.4.tgz
+        signature:
+          filename: Python-2.4.4.tgz.asc
+          url: https://www.python.org/ftp/python/2.4.4/Python-2.4.4.tgz.asc
+        url: https://www.python.org/ftp/python/2.4.4/Python-2.4.4.tgz
+  2.4.5:
+    source:
+      .tgz:
+        filename: Python-2.4.5.tgz
+        signature:
+          filename: Python-2.4.5.tgz.asc
+          url: https://www.python.org/ftp/python/2.4.5/Python-2.4.5.tgz.asc
+        url: https://www.python.org/ftp/python/2.4.5/Python-2.4.5.tgz
   2.4.6:
-    files:
-      signatures:
-        .tgz.asc: {filename: Python-2.4.6.tgz.asc, url: 'https://www.python.org/ftp/python/2.4.6/Python-2.4.6.tgz.asc'}
-      source:
-        .tgz: {filename: Python-2.4.6.tgz, md5sum: d408bb001550778484081b41174dd5e6,
-          url: 'https://www.python.org/ftp/python/2.4.6/Python-2.4.6.tgz'}
-  2.5.1: {}
-  2.5.2: {}
-  2.5.3: {}
-  2.5.4: {}
-  2.5.5: {}
+    source:
+      .tgz:
+        filename: Python-2.4.6.tgz
+        signature:
+          filename: Python-2.4.6.tgz.asc
+          url: https://www.python.org/ftp/python/2.4.6/Python-2.4.6.tgz.asc
+        url: https://www.python.org/ftp/python/2.4.6/Python-2.4.6.tgz
+  '2.5':
+    source:
+      .tgz:
+        filename: Python-2.5.tgz
+        signature:
+          filename: Python-2.5.tgz.asc
+          url: https://www.python.org/ftp/python/2.5/Python-2.5.tgz.asc
+        url: https://www.python.org/ftp/python/2.5/Python-2.5.tgz
+  2.5.1:
+    source:
+      .tgz:
+        filename: Python-2.5.1.tgz
+        signature:
+          filename: Python-2.5.1.tgz.asc
+          url: https://www.python.org/ftp/python/2.5.1/Python-2.5.1.tgz.asc
+        url: https://www.python.org/ftp/python/2.5.1/Python-2.5.1.tgz
+  2.5.2:
+    source:
+      .tgz:
+        filename: Python-2.5.2.tgz
+        signature:
+          filename: Python-2.5.2.tgz.asc
+          url: https://www.python.org/ftp/python/2.5.2/Python-2.5.2.tgz.asc
+        url: https://www.python.org/ftp/python/2.5.2/Python-2.5.2.tgz
+  2.5.3:
+    source:
+      .tgz:
+        filename: Python-2.5.3.tgz
+        signature:
+          filename: Python-2.5.3.tgz.asc
+          url: https://www.python.org/ftp/python/2.5.3/Python-2.5.3.tgz.asc
+        url: https://www.python.org/ftp/python/2.5.3/Python-2.5.3.tgz
+  2.5.4:
+    source:
+      .tgz:
+        filename: Python-2.5.4.tgz
+        signature:
+          filename: Python-2.5.4.tgz.asc
+          url: https://www.python.org/ftp/python/2.5.4/Python-2.5.4.tgz.asc
+        url: https://www.python.org/ftp/python/2.5.4/Python-2.5.4.tgz
+  2.5.5:
+    source:
+      .tgz:
+        filename: Python-2.5.5.tgz
+        signature:
+          filename: Python-2.5.5.tgz.asc
+          url: https://www.python.org/ftp/python/2.5.5/Python-2.5.5.tgz.asc
+        url: https://www.python.org/ftp/python/2.5.5/Python-2.5.5.tgz
   2.5.6:
-    files:
-      signatures:
-        .tgz.asc: {filename: Python-2.5.6.tgz.asc, url: 'https://www.python.org/ftp/python/2.5.6/Python-2.5.6.tgz.asc'}
-      source:
-        .tgz: {filename: Python-2.5.6.tgz, md5sum: e835cfc25e510200a5c4cf2a72ee52a7,
-          url: 'https://www.python.org/ftp/python/2.5.6/Python-2.5.6.tgz'}
-  2.6.1: {}
-  2.6.2: {}
-  2.6.3: {}
-  2.6.4: {}
-  2.6.5: {}
-  2.6.6: {}
-  2.6.7: {}
-  2.6.8: {}
+    source:
+      .tgz:
+        filename: Python-2.5.6.tgz
+        signature:
+          filename: Python-2.5.6.tgz.asc
+          url: https://www.python.org/ftp/python/2.5.6/Python-2.5.6.tgz.asc
+        url: https://www.python.org/ftp/python/2.5.6/Python-2.5.6.tgz
+  '2.6':
+    source:
+      .tgz:
+        filename: Python-2.6.tgz
+        signature:
+          filename: Python-2.6.tgz.asc
+          url: https://www.python.org/ftp/python/2.6/Python-2.6.tgz.asc
+        url: https://www.python.org/ftp/python/2.6/Python-2.6.tgz
+  2.6.1:
+    source:
+      .tgz:
+        filename: Python-2.6.1.tgz
+        signature:
+          filename: Python-2.6.1.tgz.asc
+          url: https://www.python.org/ftp/python/2.6.1/Python-2.6.1.tgz.asc
+        url: https://www.python.org/ftp/python/2.6.1/Python-2.6.1.tgz
+  2.6.2:
+    source:
+      .tgz:
+        filename: Python-2.6.2.tgz
+        signature:
+          filename: Python-2.6.2.tgz.asc
+          url: https://www.python.org/ftp/python/2.6.2/Python-2.6.2.tgz.asc
+        url: https://www.python.org/ftp/python/2.6.2/Python-2.6.2.tgz
+  2.6.3:
+    source:
+      .tgz:
+        filename: Python-2.6.3.tgz
+        signature:
+          filename: Python-2.6.3.tgz.asc
+          url: https://www.python.org/ftp/python/2.6.3/Python-2.6.3.tgz.asc
+        url: https://www.python.org/ftp/python/2.6.3/Python-2.6.3.tgz
+  2.6.4:
+    source:
+      .tgz:
+        filename: Python-2.6.4.tgz
+        signature:
+          filename: Python-2.6.4.tgz.asc
+          url: https://www.python.org/ftp/python/2.6.4/Python-2.6.4.tgz.asc
+        url: https://www.python.org/ftp/python/2.6.4/Python-2.6.4.tgz
+  2.6.5:
+    source:
+      .tgz:
+        filename: Python-2.6.5.tgz
+        signature:
+          filename: Python-2.6.5.tgz.asc
+          url: https://www.python.org/ftp/python/2.6.5/Python-2.6.5.tgz.asc
+        url: https://www.python.org/ftp/python/2.6.5/Python-2.6.5.tgz
+  2.6.6:
+    source:
+      .tgz:
+        filename: Python-2.6.6.tgz
+        signature:
+          filename: Python-2.6.6.tgz.asc
+          url: https://www.python.org/ftp/python/2.6.6/Python-2.6.6.tgz.asc
+        url: https://www.python.org/ftp/python/2.6.6/Python-2.6.6.tgz
+  2.6.7:
+    source:
+      .tgz:
+        filename: Python-2.6.7.tgz
+        signature:
+          filename: Python-2.6.7.tgz.asc
+          url: https://www.python.org/ftp/python/2.6.7/Python-2.6.7.tgz.asc
+        url: https://www.python.org/ftp/python/2.6.7/Python-2.6.7.tgz
+  2.6.8:
+    source:
+      .tar.xz:
+        filename: Python-2.6.8.tar.xz
+        signature:
+          filename: Python-2.6.8.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.6.8/Python-2.6.8.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.6.8/Python-2.6.8.tar.xz
+      .tgz:
+        filename: Python-2.6.8.tgz
+        signature:
+          filename: Python-2.6.8.tgz.asc
+          url: https://www.python.org/ftp/python/2.6.8/Python-2.6.8.tgz.asc
+        url: https://www.python.org/ftp/python/2.6.8/Python-2.6.8.tgz
   2.6.9:
-    files:
-      signatures:
-        .tar.xz.asc: {filename: Python-2.6.9.tar.xz.asc, url: 'https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tar.xz.asc'}
-        .tgz.asc: {filename: Python-2.6.9.tgz.asc, url: 'https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tgz.asc'}
-      source:
-        .tar.xz: {filename: Python-2.6.9.tar.xz, md5sum: 933a811f11e3db3d73ae492f6c3a7a76,
-          url: 'https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tar.xz'}
-        .tgz: {filename: Python-2.6.9.tgz, md5sum: 458a6bd5c01bdae93fc6dfdfb1f41f64,
-          url: 'https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tgz'}
-  2.7.1: {}
-  2.7.10: {}
-  2.7.11: {}
-  2.7.12: {}
+    source:
+      .tar.xz:
+        filename: Python-2.6.9.tar.xz
+        signature:
+          filename: Python-2.6.9.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tar.xz
+      .tgz:
+        filename: Python-2.6.9.tgz
+        signature:
+          filename: Python-2.6.9.tgz.asc
+          url: https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tgz.asc
+        url: https://www.python.org/ftp/python/2.6.9/Python-2.6.9.tgz
+  '2.7':
+    source:
+      .tgz:
+        filename: Python-2.7.tgz
+        signature:
+          filename: Python-2.7.tgz.asc
+          url: https://www.python.org/ftp/python/2.7/Python-2.7.tgz.asc
+        url: https://www.python.org/ftp/python/2.7/Python-2.7.tgz
+  2.7.1:
+    source:
+      .tgz:
+        filename: Python-2.7.1.tgz
+        signature:
+          filename: Python-2.7.1.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.1/Python-2.7.1.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.1/Python-2.7.1.tgz
+  2.7.10:
+    source:
+      .tar.xz:
+        filename: Python-2.7.10.tar.xz
+        signature:
+          filename: Python-2.7.10.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tar.xz
+      .tgz:
+        filename: Python-2.7.10.tgz
+        signature:
+          filename: Python-2.7.10.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz
+  2.7.11:
+    source:
+      .tar.xz:
+        filename: Python-2.7.11.tar.xz
+        signature:
+          filename: Python-2.7.11.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tar.xz
+      .tgz:
+        filename: Python-2.7.11.tgz
+        signature:
+          filename: Python-2.7.11.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz
+  2.7.12:
+    source:
+      .tar.xz:
+        filename: Python-2.7.12.tar.xz
+        signature:
+          filename: Python-2.7.12.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz
+      .tgz:
+        filename: Python-2.7.12.tgz
+        signature:
+          filename: Python-2.7.12.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz
   2.7.13:
-    files:
-      signatures:
-        .tar.xz.asc: {filename: Python-2.7.13.tar.xz.asc, url: 'https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz.asc'}
-        .tgz.asc: {filename: Python-2.7.13.tgz.asc, url: 'https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz.asc'}
-      source:
-        .tar.xz: {filename: Python-2.7.13.tar.xz, md5sum: 53b43534153bb2a0363f08bae8b9d990,
-          url: 'https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz'}
-        .tgz: {filename: Python-2.7.13.tgz, md5sum: 17add4bf0ad0ec2f08e0cae6d205c700,
-          url: 'https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz'}
-  2.7.2: {}
-  2.7.3: {}
-  2.7.4: {}
-  2.7.5: {}
-  2.7.6: {}
-  2.7.7: {}
-  2.7.8: {}
-  2.7.9: {}
+    source:
+      .tar.xz:
+        filename: Python-2.7.13.tar.xz
+        signature:
+          filename: Python-2.7.13.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz
+      .tgz:
+        filename: Python-2.7.13.tgz
+        signature:
+          filename: Python-2.7.13.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz
+  2.7.2:
+    source:
+      .tar.xz:
+        filename: Python-2.7.2.tar.xz
+        signature:
+          filename: Python-2.7.2.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.2/Python-2.7.2.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.2/Python-2.7.2.tar.xz
+      .tgz:
+        filename: Python-2.7.2.tgz
+        signature:
+          filename: Python-2.7.2.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.2/Python-2.7.2.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.2/Python-2.7.2.tgz
+  2.7.3:
+    source:
+      .tar.xz:
+        filename: Python-2.7.3.tar.xz
+        signature:
+          filename: Python-2.7.3.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.3/Python-2.7.3.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.3/Python-2.7.3.tar.xz
+      .tgz:
+        filename: Python-2.7.3.tgz
+        signature:
+          filename: Python-2.7.3.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
+  2.7.4:
+    source:
+      .tar.xz:
+        filename: Python-2.7.4.tar.xz
+        signature:
+          filename: Python-2.7.4.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.4/Python-2.7.4.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.4/Python-2.7.4.tar.xz
+      .tgz:
+        filename: Python-2.7.4.tgz
+        signature:
+          filename: Python-2.7.4.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.4/Python-2.7.4.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.4/Python-2.7.4.tgz
+  2.7.5:
+    source:
+      .tar.xz:
+        filename: Python-2.7.5.tar.xz
+        signature:
+          filename: Python-2.7.5.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.5/Python-2.7.5.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.5/Python-2.7.5.tar.xz
+      .tgz:
+        filename: Python-2.7.5.tgz
+        signature:
+          filename: Python-2.7.5.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz
+  2.7.6:
+    source:
+      .tar.xz:
+        filename: Python-2.7.6.tar.xz
+        signature:
+          filename: Python-2.7.6.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz
+      .tgz:
+        filename: Python-2.7.6.tgz
+        signature:
+          filename: Python-2.7.6.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz
+  2.7.7:
+    source:
+      .tar.xz:
+        filename: Python-2.7.7.tar.xz
+        signature:
+          filename: Python-2.7.7.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.7/Python-2.7.7.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.7/Python-2.7.7.tar.xz
+      .tgz:
+        filename: Python-2.7.7.tgz
+        signature:
+          filename: Python-2.7.7.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.7/Python-2.7.7.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.7/Python-2.7.7.tgz
+  2.7.8:
+    source:
+      .tar.xz:
+        filename: Python-2.7.8.tar.xz
+        signature:
+          filename: Python-2.7.8.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tar.xz
+      .tgz:
+        filename: Python-2.7.8.tgz
+        signature:
+          filename: Python-2.7.8.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz
+  2.7.9:
+    source:
+      .tar.xz:
+        filename: Python-2.7.9.tar.xz
+        signature:
+          filename: Python-2.7.9.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tar.xz
+      .tgz:
+        filename: Python-2.7.9.tgz
+        signature:
+          filename: Python-2.7.9.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz
+  '3.0':
+    source:
+      .tgz:
+        filename: Python-3.0.tgz
+        signature:
+          filename: Python-3.0.tgz.asc
+          url: https://www.python.org/ftp/python/3.0/Python-3.0.tgz.asc
+        url: https://www.python.org/ftp/python/3.0/Python-3.0.tgz
   3.0.1:
-    files:
-      signatures:
-        .tgz.asc: {filename: Python-3.0.1.tgz.asc, url: 'https://www.python.org/ftp/python/3.0.1/Python-3.0.1.tgz.asc'}
-      source:
-        .tgz: {filename: Python-3.0.1.tgz, md5sum: ad569034f6dec2d358afefc705e8c387,
-          url: 'https://www.python.org/ftp/python/3.0.1/Python-3.0.1.tgz'}
-  3.1.1: {}
-  3.1.2: {}
-  3.1.3: {}
-  3.1.4: {}
+    source:
+      .tgz:
+        filename: Python-3.0.1.tgz
+        signature:
+          filename: Python-3.0.1.tgz.asc
+          url: https://www.python.org/ftp/python/3.0.1/Python-3.0.1.tgz.asc
+        url: https://www.python.org/ftp/python/3.0.1/Python-3.0.1.tgz
+  '3.1':
+    source:
+      .tgz:
+        filename: Python-3.1.tgz
+        signature:
+          filename: Python-3.1.tgz.asc
+          url: https://www.python.org/ftp/python/3.1/Python-3.1.tgz.asc
+        url: https://www.python.org/ftp/python/3.1/Python-3.1.tgz
+  3.1.1:
+    source:
+      .tgz:
+        filename: Python-3.1.1.tgz
+        signature:
+          filename: Python-3.1.1.tgz.asc
+          url: https://www.python.org/ftp/python/3.1.1/Python-3.1.1.tgz.asc
+        url: https://www.python.org/ftp/python/3.1.1/Python-3.1.1.tgz
+  3.1.2:
+    source:
+      .tgz:
+        filename: Python-3.1.2.tgz
+        signature:
+          filename: Python-3.1.2.tgz.asc
+          url: https://www.python.org/ftp/python/3.1.2/Python-3.1.2.tgz.asc
+        url: https://www.python.org/ftp/python/3.1.2/Python-3.1.2.tgz
+  3.1.3:
+    source:
+      .tgz:
+        filename: Python-3.1.3.tgz
+        signature:
+          filename: Python-3.1.3.tgz.asc
+          url: https://www.python.org/ftp/python/3.1.3/Python-3.1.3.tgz.asc
+        url: https://www.python.org/ftp/python/3.1.3/Python-3.1.3.tgz
+  3.1.4:
+    source:
+      .tar.xz:
+        filename: Python-3.1.4.tar.xz
+        signature:
+          filename: Python-3.1.4.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.1.4/Python-3.1.4.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.1.4/Python-3.1.4.tar.xz
+      .tgz:
+        filename: Python-3.1.4.tgz
+        signature:
+          filename: Python-3.1.4.tgz.asc
+          url: https://www.python.org/ftp/python/3.1.4/Python-3.1.4.tgz.asc
+        url: https://www.python.org/ftp/python/3.1.4/Python-3.1.4.tgz
   3.1.5:
-    files:
-      signatures:
-        .tar.xz.asc: {filename: Python-3.1.5.tar.xz.asc, url: 'https://www.python.org/ftp/python/3.1.5/Python-3.1.5.tar.xz.asc'}
-        .tgz.asc: {filename: Python-3.1.5.tgz.asc, url: 'https://www.python.org/ftp/python/3.1.5/Python-3.1.5.tgz.asc'}
-      source:
-        .tar.xz: {filename: Python-3.1.5.tar.xz, md5sum: 20dd2b7f801dc97db948dd168df4dd52,
-          url: 'https://www.python.org/ftp/python/3.1.5/Python-3.1.5.tar.xz'}
-        .tgz: {filename: Python-3.1.5.tgz, md5sum: 02196d3fc7bc76bdda68aa36b0dd16ab,
-          url: 'https://www.python.org/ftp/python/3.1.5/Python-3.1.5.tgz'}
-  3.2.1: {}
-  3.2.2: {}
-  3.2.3: {}
-  3.2.4: {}
-  3.2.5: {}
+    source:
+      .tar.xz:
+        filename: Python-3.1.5.tar.xz
+        signature:
+          filename: Python-3.1.5.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.1.5/Python-3.1.5.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.1.5/Python-3.1.5.tar.xz
+      .tgz:
+        filename: Python-3.1.5.tgz
+        signature:
+          filename: Python-3.1.5.tgz.asc
+          url: https://www.python.org/ftp/python/3.1.5/Python-3.1.5.tgz.asc
+        url: https://www.python.org/ftp/python/3.1.5/Python-3.1.5.tgz
+  '3.2':
+    source:
+      .tar.xz:
+        filename: Python-3.2.tar.xz
+        signature:
+          filename: Python-3.2.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.2/Python-3.2.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.2/Python-3.2.tar.xz
+      .tgz:
+        filename: Python-3.2.tgz
+        signature:
+          filename: Python-3.2.tgz.asc
+          url: https://www.python.org/ftp/python/3.2/Python-3.2.tgz.asc
+        url: https://www.python.org/ftp/python/3.2/Python-3.2.tgz
+  3.2.1:
+    source:
+      .tar.xz:
+        filename: Python-3.2.1.tar.xz
+        signature:
+          filename: Python-3.2.1.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.2.1/Python-3.2.1.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.2.1/Python-3.2.1.tar.xz
+      .tgz:
+        filename: Python-3.2.1.tgz
+        signature:
+          filename: Python-3.2.1.tgz.asc
+          url: https://www.python.org/ftp/python/3.2.1/Python-3.2.1.tgz.asc
+        url: https://www.python.org/ftp/python/3.2.1/Python-3.2.1.tgz
+  3.2.2:
+    source:
+      .tar.xz:
+        filename: Python-3.2.2.tar.xz
+        signature:
+          filename: Python-3.2.2.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.2.2/Python-3.2.2.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.2.2/Python-3.2.2.tar.xz
+      .tgz:
+        filename: Python-3.2.2.tgz
+        signature:
+          filename: Python-3.2.2.tgz.asc
+          url: https://www.python.org/ftp/python/3.2.2/Python-3.2.2.tgz.asc
+        url: https://www.python.org/ftp/python/3.2.2/Python-3.2.2.tgz
+  3.2.3:
+    source:
+      .tar.xz:
+        filename: Python-3.2.3.tar.xz
+        signature:
+          filename: Python-3.2.3.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.2.3/Python-3.2.3.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.2.3/Python-3.2.3.tar.xz
+      .tgz:
+        filename: Python-3.2.3.tgz
+        signature:
+          filename: Python-3.2.3.tgz.asc
+          url: https://www.python.org/ftp/python/3.2.3/Python-3.2.3.tgz.asc
+        url: https://www.python.org/ftp/python/3.2.3/Python-3.2.3.tgz
+  3.2.4:
+    source:
+      .tar.xz:
+        filename: Python-3.2.4.tar.xz
+        signature:
+          filename: Python-3.2.4.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.2.4/Python-3.2.4.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.2.4/Python-3.2.4.tar.xz
+      .tgz:
+        filename: Python-3.2.4.tgz
+        signature:
+          filename: Python-3.2.4.tgz.asc
+          url: https://www.python.org/ftp/python/3.2.4/Python-3.2.4.tgz.asc
+        url: https://www.python.org/ftp/python/3.2.4/Python-3.2.4.tgz
+  3.2.5:
+    source:
+      .tar.xz:
+        filename: Python-3.2.5.tar.xz
+        signature:
+          filename: Python-3.2.5.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.2.5/Python-3.2.5.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.2.5/Python-3.2.5.tar.xz
+      .tgz:
+        filename: Python-3.2.5.tgz
+        signature:
+          filename: Python-3.2.5.tgz.asc
+          url: https://www.python.org/ftp/python/3.2.5/Python-3.2.5.tgz.asc
+        url: https://www.python.org/ftp/python/3.2.5/Python-3.2.5.tgz
   3.2.6:
-    files:
-      signatures:
-        .tar.xz.asc: {filename: Python-3.2.6.tar.xz.asc, url: 'https://www.python.org/ftp/python/3.2.6/Python-3.2.6.tar.xz.asc'}
-        .tgz.asc: {filename: Python-3.2.6.tgz.asc, url: 'https://www.python.org/ftp/python/3.2.6/Python-3.2.6.tgz.asc'}
-      source:
-        .tar.xz: {filename: Python-3.2.6.tar.xz, md5sum: e0ba4360dfcb4aec735e666cc0ae7b0e,
-          url: 'https://www.python.org/ftp/python/3.2.6/Python-3.2.6.tar.xz'}
-        .tgz: {filename: Python-3.2.6.tgz, md5sum: 23815d82ae706e9b781ca65865353d39,
-          url: 'https://www.python.org/ftp/python/3.2.6/Python-3.2.6.tgz'}
-  3.3.0: {}
-  3.3.1: {}
-  3.3.2: {}
-  3.3.3: {}
-  3.3.4: {}
-  3.3.5: {}
+    source:
+      .tar.xz:
+        filename: Python-3.2.6.tar.xz
+        signature:
+          filename: Python-3.2.6.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.2.6/Python-3.2.6.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.2.6/Python-3.2.6.tar.xz
+      .tgz:
+        filename: Python-3.2.6.tgz
+        signature:
+          filename: Python-3.2.6.tgz.asc
+          url: https://www.python.org/ftp/python/3.2.6/Python-3.2.6.tgz.asc
+        url: https://www.python.org/ftp/python/3.2.6/Python-3.2.6.tgz
+  3.3.0:
+    source:
+      .tar.xz:
+        filename: Python-3.3.0.tar.xz
+        signature:
+          filename: Python-3.3.0.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.3.0/Python-3.3.0.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.3.0/Python-3.3.0.tar.xz
+      .tgz:
+        filename: Python-3.3.0.tgz
+        signature:
+          filename: Python-3.3.0.tgz.asc
+          url: https://www.python.org/ftp/python/3.3.0/Python-3.3.0.tgz.asc
+        url: https://www.python.org/ftp/python/3.3.0/Python-3.3.0.tgz
+  3.3.1:
+    source:
+      .tar.xz:
+        filename: Python-3.3.1.tar.xz
+        signature:
+          filename: Python-3.3.1.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.3.1/Python-3.3.1.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.3.1/Python-3.3.1.tar.xz
+      .tgz:
+        filename: Python-3.3.1.tgz
+        signature:
+          filename: Python-3.3.1.tgz.asc
+          url: https://www.python.org/ftp/python/3.3.1/Python-3.3.1.tgz.asc
+        url: https://www.python.org/ftp/python/3.3.1/Python-3.3.1.tgz
+  3.3.2:
+    source:
+      .tar.xz:
+        filename: Python-3.3.2.tar.xz
+        signature:
+          filename: Python-3.3.2.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.3.2/Python-3.3.2.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.3.2/Python-3.3.2.tar.xz
+      .tgz:
+        filename: Python-3.3.2.tgz
+        signature:
+          filename: Python-3.3.2.tgz.asc
+          url: https://www.python.org/ftp/python/3.3.2/Python-3.3.2.tgz.asc
+        url: https://www.python.org/ftp/python/3.3.2/Python-3.3.2.tgz
+  3.3.3:
+    source:
+      .tar.xz:
+        filename: Python-3.3.3.tar.xz
+        signature:
+          filename: Python-3.3.3.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.3.3/Python-3.3.3.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.3.3/Python-3.3.3.tar.xz
+      .tgz:
+        filename: Python-3.3.3.tgz
+        signature:
+          filename: Python-3.3.3.tgz.asc
+          url: https://www.python.org/ftp/python/3.3.3/Python-3.3.3.tgz.asc
+        url: https://www.python.org/ftp/python/3.3.3/Python-3.3.3.tgz
+  3.3.4:
+    source:
+      .tar.xz:
+        filename: Python-3.3.4.tar.xz
+        signature:
+          filename: Python-3.3.4.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.3.4/Python-3.3.4.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.3.4/Python-3.3.4.tar.xz
+      .tgz:
+        filename: Python-3.3.4.tgz
+        signature:
+          filename: Python-3.3.4.tgz.asc
+          url: https://www.python.org/ftp/python/3.3.4/Python-3.3.4.tgz.asc
+        url: https://www.python.org/ftp/python/3.3.4/Python-3.3.4.tgz
+  3.3.5:
+    source:
+      .tar.xz:
+        filename: Python-3.3.5.tar.xz
+        signature:
+          filename: Python-3.3.5.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.3.5/Python-3.3.5.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.3.5/Python-3.3.5.tar.xz
+      .tgz:
+        filename: Python-3.3.5.tgz
+        signature:
+          filename: Python-3.3.5.tgz.asc
+          url: https://www.python.org/ftp/python/3.3.5/Python-3.3.5.tgz.asc
+        url: https://www.python.org/ftp/python/3.3.5/Python-3.3.5.tgz
   3.3.6:
-    files:
-      signatures:
-        .tar.xz.asc: {filename: Python-3.3.6.tar.xz.asc, url: 'https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tar.xz.asc'}
-        .tgz.asc: {filename: Python-3.3.6.tgz.asc, url: 'https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tgz.asc'}
-      source:
-        .tar.xz: {filename: Python-3.3.6.tar.xz, md5sum: 67b8ddd9ee600d636423ada321b8da86,
-          url: 'https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tar.xz'}
-        .tgz: {filename: Python-3.3.6.tgz, md5sum: cdb3cd08f96f074b3f3994ccb51063e9,
-          url: 'https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tgz'}
-  3.4.0: {}
-  3.4.1: {}
-  3.4.2: {}
-  3.4.3: {}
-  3.4.4: {}
-  3.4.5: {}
-  3.4.6: {}
+    source:
+      .tar.xz:
+        filename: Python-3.3.6.tar.xz
+        signature:
+          filename: Python-3.3.6.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tar.xz
+      .tgz:
+        filename: Python-3.3.6.tgz
+        signature:
+          filename: Python-3.3.6.tgz.asc
+          url: https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tgz.asc
+        url: https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tgz
+  3.4.0:
+    source:
+      .tar.xz:
+        filename: Python-3.4.0.tar.xz
+        signature:
+          filename: Python-3.4.0.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.4.0/Python-3.4.0.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.4.0/Python-3.4.0.tar.xz
+      .tgz:
+        filename: Python-3.4.0.tgz
+        signature:
+          filename: Python-3.4.0.tgz.asc
+          url: https://www.python.org/ftp/python/3.4.0/Python-3.4.0.tgz.asc
+        url: https://www.python.org/ftp/python/3.4.0/Python-3.4.0.tgz
+  3.4.1:
+    source:
+      .tar.xz:
+        filename: Python-3.4.1.tar.xz
+        signature:
+          filename: Python-3.4.1.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.4.1/Python-3.4.1.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.4.1/Python-3.4.1.tar.xz
+      .tgz:
+        filename: Python-3.4.1.tgz
+        signature:
+          filename: Python-3.4.1.tgz.asc
+          url: https://www.python.org/ftp/python/3.4.1/Python-3.4.1.tgz.asc
+        url: https://www.python.org/ftp/python/3.4.1/Python-3.4.1.tgz
+  3.4.2:
+    source:
+      .tar.xz:
+        filename: Python-3.4.2.tar.xz
+        signature:
+          filename: Python-3.4.2.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tar.xz
+      .tgz:
+        filename: Python-3.4.2.tgz
+        signature:
+          filename: Python-3.4.2.tgz.asc
+          url: https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz.asc
+        url: https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
+  3.4.3:
+    source:
+      .tar.xz:
+        filename: Python-3.4.3.tar.xz
+        signature:
+          filename: Python-3.4.3.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz
+      .tgz:
+        filename: Python-3.4.3.tgz
+        signature:
+          filename: Python-3.4.3.tgz.asc
+          url: https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tgz.asc
+        url: https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tgz
+  3.4.4:
+    source:
+      .tar.xz:
+        filename: Python-3.4.4.tar.xz
+        signature:
+          filename: Python-3.4.4.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tar.xz
+      .tgz:
+        filename: Python-3.4.4.tgz
+        signature:
+          filename: Python-3.4.4.tgz.asc
+          url: https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tgz.asc
+        url: https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tgz
+  3.4.5:
+    source:
+      .tar.xz:
+        filename: Python-3.4.5.tar.xz
+        signature:
+          filename: Python-3.4.5.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tar.xz
+      .tgz:
+        filename: Python-3.4.5.tgz
+        signature:
+          filename: Python-3.4.5.tgz.asc
+          url: https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tgz.asc
+        url: https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tgz
+  3.4.6:
+    source:
+      .tar.xz:
+        filename: Python-3.4.6.tar.xz
+        signature:
+          filename: Python-3.4.6.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.4.6/Python-3.4.6.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.4.6/Python-3.4.6.tar.xz
+      .tgz:
+        filename: Python-3.4.6.tgz
+        signature:
+          filename: Python-3.4.6.tgz.asc
+          url: https://www.python.org/ftp/python/3.4.6/Python-3.4.6.tgz.asc
+        url: https://www.python.org/ftp/python/3.4.6/Python-3.4.6.tgz
   3.4.7:
-    files:
-      signatures: {}
-      source: {}
-  3.5.0: {}
-  3.5.1: {}
-  3.5.2: {}
-  3.5.3: {}
+    source:
+      .tar.xz:
+        filename: Python-3.4.7.tar.xz
+        signature:
+          filename: Python-3.4.7.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.4.7/Python-3.4.7.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.4.7/Python-3.4.7.tar.xz
+      .tgz:
+        filename: Python-3.4.7.tgz
+        signature:
+          filename: Python-3.4.7.tgz.asc
+          url: https://www.python.org/ftp/python/3.4.7/Python-3.4.7.tgz.asc
+        url: https://www.python.org/ftp/python/3.4.7/Python-3.4.7.tgz
+  3.5.0:
+    source:
+      .tar.xz:
+        filename: Python-3.5.0.tar.xz
+        signature:
+          filename: Python-3.5.0.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tar.xz
+      .tgz:
+        filename: Python-3.5.0.tgz
+        signature:
+          filename: Python-3.5.0.tgz.asc
+          url: https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tgz.asc
+        url: https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tgz
+  3.5.1:
+    source:
+      .tar.xz:
+        filename: Python-3.5.1.tar.xz
+        signature:
+          filename: Python-3.5.1.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz
+      .tgz:
+        filename: Python-3.5.1.tgz
+        signature:
+          filename: Python-3.5.1.tgz.asc
+          url: https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz.asc
+        url: https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
+  3.5.2:
+    source:
+      .tar.xz:
+        filename: Python-3.5.2.tar.xz
+        signature:
+          filename: Python-3.5.2.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tar.xz
+      .tgz:
+        filename: Python-3.5.2.tgz
+        signature:
+          filename: Python-3.5.2.tgz.asc
+          url: https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz.asc
+        url: https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
+  3.5.3:
+    source:
+      .tar.xz:
+        filename: Python-3.5.3.tar.xz
+        signature:
+          filename: Python-3.5.3.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tar.xz
+      .tgz:
+        filename: Python-3.5.3.tgz
+        signature:
+          filename: Python-3.5.3.tgz.asc
+          url: https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz.asc
+        url: https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz
   3.5.4:
-    files:
-      signatures: {}
-      source: {}
-  3.6.0: {}
-  3.6.1: {}
+    source:
+      .tar.xz:
+        filename: Python-3.5.4.tar.xz
+        signature:
+          filename: Python-3.5.4.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tar.xz
+      .tgz:
+        filename: Python-3.5.4.tgz
+        signature:
+          filename: Python-3.5.4.tgz.asc
+          url: https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tgz.asc
+        url: https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tgz
+  3.6.0:
+    source:
+      .tar.xz:
+        filename: Python-3.6.0.tar.xz
+        signature:
+          filename: Python-3.6.0.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz
+      .tgz:
+        filename: Python-3.6.0.tgz
+        signature:
+          filename: Python-3.6.0.tgz.asc
+          url: https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz.asc
+        url: https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
+  3.6.1:
+    source:
+      .tar.xz:
+        filename: Python-3.6.1.tar.xz
+        signature:
+          filename: Python-3.6.1.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tar.xz
+      .tgz:
+        filename: Python-3.6.1.tgz
+        signature:
+          filename: Python-3.6.1.tgz.asc
+          url: https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz.asc
+        url: https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz
   3.6.2:
-    files:
-      signatures:
-        .tar.xz.asc: {filename: Python-3.6.2.tar.xz.asc, url: 'https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz.asc'}
-        .tgz.asc: {filename: Python-3.6.2.tgz.asc, url: 'https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz.asc'}
-      source:
-        .tar.xz: {filename: Python-3.6.2.tar.xz, md5sum: 2c68846471994897278364fc18730dd9,
-          url: 'https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz'}
-        .tgz: {filename: Python-3.6.2.tgz, md5sum: e1a36bfffdd1d3a780b1825daf16e56c,
-          url: 'https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz'}
+    source:
+      .tar.xz:
+        filename: Python-3.6.2.tar.xz
+        signature:
+          filename: Python-3.6.2.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz
+      .tgz:
+        filename: Python-3.6.2.tgz
+        signature:
+          filename: Python-3.6.2.tgz.asc
+          url: https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz.asc
+        url: https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz
