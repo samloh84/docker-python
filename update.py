@@ -30,6 +30,7 @@ def render_python_dockerfiles(data, config, update_all_versions=False, force_upd
     env = Environment(loader=FileSystemLoader(os.path.abspath('templates')))
     base_repositories = config['base_repositories']
     template_files = config['templates']
+    registries = config.get('registries')
 
     versions = data['versions'].keys()
 
@@ -74,7 +75,8 @@ def render_python_dockerfiles(data, config, update_all_versions=False, force_upd
                     'base_image_name': base_image_name,
                     'config': config,
                     'repository_name': repository_name,
-                    'tags': tags
+                    'tags': tags,
+                    'registries':registries
                 }
 
                 pprint(render_data)
