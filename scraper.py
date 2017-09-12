@@ -2,14 +2,12 @@
 
 import sys
 
-from pydash import set_ as _set, flatten as _flatten
-
+import pydash
 from util import *
 
 
 class PythonScraper:
     def __init__(self, config):
-
         self.starting_url = config['starting_url']
 
         scraper_url_patterns = config['scraper_url_patterns']
@@ -29,7 +27,7 @@ class PythonScraper:
         responses = deep_scrape(self.starting_url, url_patterns=self.scraper_url_patterns)
         parse_lambda = lambda (_, response): parse_response_for_urls(response, regex_filters=self.scraper_url_patterns)
         parsed_urls = map(parse_lambda, responses)
-        parsed_urls = _flatten(parsed_urls)
+        parsed_urls = pydash.flatten(parsed_urls)
         version_urls = {}
         for parsed_url in parsed_urls:
             for version_url_pattern in self.version_url_patterns:
@@ -54,7 +52,7 @@ class PythonScraper:
 
         responses = http_multiget(urls_to_parse)
 
-        parsed_urls = _flatten([parse_response_for_urls(response) for (_, response) in responses])
+        parsed_urls = pydash.flatten([parse_response_for_urls(response) for (_, response) in responses])
 
         version_files = {}
         unmatched_urls = []
@@ -70,7 +68,7 @@ class PythonScraper:
                 url_version = match.group(1)
                 filename = match.group(2)
 
-                _set(version_files, [url_version] + path, {
+                pydash.set_(version_files, [url_version] + path, {
                     'filename': filename,
                     'url': parsed_url
                 })
@@ -86,7 +84,11 @@ def main(argv):
     scraper = PythonScraper(config)
     versions = scraper.list_version_urls()
     print_yaml(versions)
-    files = scraper.list_version_files(versions.keys())
+    filtered_versions = filter_latest_versions(versions.keys(),
+                                               version_constraints=config.get('version_constraints'),
+                                               normalize_version=normalize_version_to_semver)
+    print_yaml(filtered_versions)
+    files = scraper.list_version_files(filtered_versions)
     print_yaml(files)
 
 

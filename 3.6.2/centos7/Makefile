@@ -1,5 +1,4 @@
 REPOSITORY_NAME := samloh84/python3
-REGISTRIES := 
 TAGS := 3.6.2 3.6.2-centos7
 CONTAINER_NAME := $(shell echo $(REPOSITORY_NAME) | sed -e 's/[^a-zA-Z0-9_.-]/-/g')
 
@@ -14,15 +13,7 @@ build:
 
 push:
 	set -x; \
-	if [[ -z "$(REGISTRIES)" ]]; then \
-	for TAG in $(TAGS); do sudo docker push $(REPOSITORY_NAME):$${TAG}; done; \
-	else \
-	for REGISTRY in $(REGISTRIES); do \
-	for TAG in $(TAGS); do \
-	sudo docker push $${REGISTRY}/$(REPOSITORY_NAME):$${TAG}; \
-	done; \
-	done; \
-	fi
+	for TAG in $(TAGS); do sudo docker push $(REPOSITORY_NAME):$${TAG}; done;
 
 run:
 	set -x; \
