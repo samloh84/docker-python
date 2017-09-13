@@ -2,9 +2,11 @@
 MAKEFILES:=$(shell find . -mindepth 2 -name "Makefile")
 
 
-.PHONY: update push
+.PHONY: update
 
-all: $(MAKEFILES)
+all: build
+
+build: $(MAKEFILES)
 	FAILED_MAKEFILES=""; \
 	for MAKEFILE in $(MAKEFILES); do \
 		$(MAKE) -C $$(dirname $${MAKEFILE}); \
