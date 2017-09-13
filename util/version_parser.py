@@ -100,6 +100,7 @@ def get_latest_version(versions, version_constraints=None,
 
     return latest_version
 
+
 def normalize_version_to_semver(version):
     pattern = re.compile('(\d+)(?:\.(\d+)(?:\.(\d+))?)?')
     match = pattern.search(version)
