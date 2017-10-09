@@ -1,4 +1,4 @@
-last_updated: 1505292164
+last_updated: 1507542211
 versions:
   2.0.1:
     source:
@@ -385,6 +385,20 @@ versions:
           filename: Python-2.7.13.tgz.asc
           url: https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz.asc
         url: https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz
+  2.7.14:
+    source:
+      .tar.xz:
+        filename: Python-2.7.14.tar.xz
+        signature:
+          filename: Python-2.7.14.tar.xz.asc
+          url: https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz.asc
+        url: https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz
+      .tgz:
+        filename: Python-2.7.14.tgz
+        signature:
+          filename: Python-2.7.14.tgz.asc
+          url: https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tgz.asc
+        url: https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tgz
   2.7.2:
     source:
       .tar.xz:
@@ -769,6 +783,20 @@ versions:
           filename: Python-3.3.6.tgz.asc
           url: https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tgz.asc
         url: https://www.python.org/ftp/python/3.3.6/Python-3.3.6.tgz
+  3.3.7:
+    source:
+      .tar.xz:
+        filename: Python-3.3.7.tar.xz
+        signature:
+          filename: Python-3.3.7.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.3.7/Python-3.3.7.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.3.7/Python-3.3.7.tar.xz
+      .tgz:
+        filename: Python-3.3.7.tgz
+        signature:
+          filename: Python-3.3.7.tgz.asc
+          url: https://www.python.org/ftp/python/3.3.7/Python-3.3.7.tgz.asc
+        url: https://www.python.org/ftp/python/3.3.7/Python-3.3.7.tgz
   3.4.0:
     source:
       .tar.xz:
@@ -993,3 +1021,17 @@ versions:
           filename: Python-3.6.2.tgz.asc
           url: https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz.asc
         url: https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz
+  3.6.3:
+    source:
+      .tar.xz:
+        filename: Python-3.6.3.tar.xz
+        signature:
+          filename: Python-3.6.3.tar.xz.asc
+          url: https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz.asc
+        url: https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz
+      .tgz:
+        filename: Python-3.6.3.tgz
+        signature:
+          filename: Python-3.6.3.tgz.asc
+          url: https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz.asc
+        url: https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz
