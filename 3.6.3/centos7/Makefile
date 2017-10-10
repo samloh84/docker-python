@@ -1,8 +1,5 @@
-REPOSITORY_NAME := {{ repository_name }}
-{% if registries -%}
-REGISTRIES := {{ registries | join(' ') }}
-{% endif -%}
-TAGS := {{ tags | join(' ') }}
+REPOSITORY_NAME := samloh84/python3
+TAGS := 3.6.3 3.6.3-centos7
 CONTAINER_NAME := $(shell echo $(REPOSITORY_NAME) | sed -e 's/[^a-zA-Z0-9_.-]/-/g')
 
 .PHONY: all clean build push bash sudo run exec rm rmi
@@ -12,26 +9,11 @@ build:
 	set -x && \
 	DOCKER_BUILD_ARGS="$${DOCKER_BUILD_ARGS} " && \
 	for TAG in $(TAGS); do DOCKER_BUILD_ARGS+="-t $(REPOSITORY_NAME):$${TAG} "; done && \
-	{% if registries -%}
-	for REGISTRY in $(REGISTRIES); do \
-	for TAG in $(TAGS); do \
-	DOCKER_BUILD_ARGS+="-t $${REGISTRY}/$(REPOSITORY_NAME):$${TAG} "; \
-	done; \
-	done && \
-	{% endif -%}
 	sudo docker build $${DOCKER_BUILD_ARGS} .
 
 push:
 	set -x && \
-	{% if registries -%}
-	for REGISTRY in $(REGISTRIES); do \
-	for TAG in $(TAGS); do \
-	sudo docker push $${REGISTRY}/$(REPOSITORY_NAME):$${TAG}; \
-	done; \
-	done;
-	{%- else -%}
 	for TAG in $(TAGS); do sudo docker push $(REPOSITORY_NAME):$${TAG}; done;
-	{%- endif %}
 
 run:
 	set -x && \
@@ -43,8 +25,7 @@ run:
 	for TAG in $(TAGS); do IMAGE_NAME="$(REPOSITORY_NAME):$${TAG} "; break; done && \
 	sudo docker run $${DOCKER_RUN_ARGS} $${IMAGE_NAME}
 
-{% set container_shell = 'ash' if base_os == 'alpine' else 'bash' -%}
-{{ container_shell }}:
+bash:
 	set -x && \
 	DOCKER_RUN_ARGS="$${DOCKER_RUN_ARGS} " && \
 	DOCKER_RUN_ARGS+="--tty " && \
@@ -52,7 +33,7 @@ run:
 	DOCKER_RUN_ARGS+="--rm " && \
 	DOCKER_RUN_ARGS+="--name $(CONTAINER_NAME) " && \
 	for TAG in $(TAGS); do IMAGE_NAME="$(REPOSITORY_NAME):$${TAG} "; break; done && \
-	sudo docker run $${DOCKER_RUN_ARGS} $${IMAGE_NAME} {{ container_shell }}
+	sudo docker run $${DOCKER_RUN_ARGS} $${IMAGE_NAME} bash
 
 sudo:
 	set -x && \
@@ -64,7 +45,7 @@ sudo:
 	DOCKER_RUN_ARGS+="--user 0 "; \
 	DOCKER_RUN_ARGS+="--privileged "; \
 	for TAG in $(TAGS); do IMAGE_NAME="$(REPOSITORY_NAME):$${TAG} "; break; done; \
-	sudo docker run $${DOCKER_RUN_ARGS} $${IMAGE_NAME} {{ container_shell }}
+	sudo docker run $${DOCKER_RUN_ARGS} $${IMAGE_NAME} bash
 
 rm:
 	set -x && \
@@ -79,24 +60,13 @@ rmi:
 
 save:
 	set -x && \
-	{% if registries -%}
-	for ORIGINAL_REGISTRY in $(REGISTRIES); do break; done && \
-	for ORIGINAL_TAG in $(TAGS); do break; done && \
-	ORIGINAL_IMAGE_NAME="$${ORIGINAL_REGISTRY}}/$(REPOSITORY_NAME):$${ORIGINAL_TAG}" && \
-	if [[ -z "$${IMAGE_NAME}" ]]; then \
-	REGISTRY="$${REGISTRY:-$${ORIGINAL_REGISTRY}}" && \
-	TAG="$${TAG:-$${ORIGINAL_TAG}}" && \
-	IMAGE_NAME="$${REGISTRY}}/$(REPOSITORY_NAME):$${TAG}"; \
-	fi && \
-	{%- else -%}
 	for ORIGINAL_TAG in $(TAGS); do break; done && \
 	ORIGINAL_IMAGE_NAME="$(REPOSITORY_NAME):$${ORIGINAL_TAG}" && \
 	if [[ -z "$${IMAGE_NAME}" ]]; then \
 	TAG="$${TAG:-$${ORIGINAL_TAG}}" && \
 	IMAGE_NAME="$(REPOSITORY_NAME):$${TAG}"; \
 	fi && \
-	{% endif -%}
-	ARCHIVE_NAME="$$(echo $${IMAGE_NAME} | sed -e 's/[^a-zA-Z0-9_.-]\+/_/g').sh" && \
+	ARCHIVE_NAME="$$(echo $${IMAGE_NAME} | sed -e 's/[^a-zA-Z0-9_.-]\+/_/g').tar.gz" && \
 	echo -e "#!/bin/bash -e\necho Importing $${IMAGE_NAME}\nARCHIVE=\$$(awk '/^__ARCHIVE_MARKER__/ { print NR + 1; exit 0; }' \$$0)\ntail -n+\$$ARCHIVE \$$0 | docker import -\ndocker push $${IMAGE_NAME}\nexit 0\n__ARCHIVE_MARKER__" > $${ARCHIVE_NAME}
 	sudo docker tag $${ORIGINAL_IMAGE_NAME} $${IMAGE_NAME} && \
 	sudo docker save $${IMAGE_NAME} | gzip -9 >> $${ARCHIVE_NAME}
